@@ -25,7 +25,7 @@ def genPost(String mailId, Date date, String content) {
 	String masked = content.find(/From: Ingress Operations.*?<\/div>/) {str->str.replaceAll(/To: .+?<br>/, "To: **<br>")}
 	if (masked == null) return "ingress operation mail is not found."
 	new File(Const.postpath, filename).withWriter('UTF-8') { writer ->
-		writer << """--
+		writer << """---
 layout: portal
 tags: reject
 id: ${mailId}
@@ -34,7 +34,7 @@ portalname: ${portalname}
 sentdate: ${date}
 """
 		if (location) writer << "location: ${location}\n"
-		writer << "--\n\n"
+		writer << "---\n\n"
 		writer << masked
 	}
 	return null
