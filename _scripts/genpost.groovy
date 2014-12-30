@@ -10,13 +10,14 @@ class Const {
 
 def genPost(String mailId, Date date, String content) {
 	println "generating post"
-	println content
+//	println content
 	String imgurl = content.find(/img src="https:\/\/.+?\/[\w\-]+/) {str-> str.substring(str.indexOf("https"))}
 	if (imgurl == null) return "image url is not found."
-	println imgurl
+	println "imgurl: " + imgurl
 //	String id = imgurl.substring(imgurl.lastIndexOf("/") + 1)
 //	if (id == null) return "image id is not found."
 	String filename = date.format("yyyy-MM-dd-") + mailId + ".html"
+	println "filename: " + filename
 
 	String location = null
 	if (content =~ /www\.google[^\/]+\/maps/) {
@@ -24,9 +25,10 @@ def genPost(String mailId, Date date, String content) {
 		location = location.substring(1)
 		location = location.substring(0, location.lastIndexOf(","))
 	}
+	println "location: " + location
 	String portalname = content.find(/Rejected: [^<]+/) {str->str.substring(10)}
 	if (portalname == null) return "portal name is not found."
-	println portalname
+	println "portalname: " + portalname
 	String masked = content.find(/From:.*?Ingress Operations.*?<\/div>/) {str->str.replaceAll(/To: .+?<br>/, "To: **<br>")}
 	if (masked == null) return "ingress operation mail is not found."
 	new File(Const.postpath, filename).withWriter('UTF-8') { writer ->
