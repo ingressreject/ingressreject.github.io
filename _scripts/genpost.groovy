@@ -31,11 +31,15 @@ def genPost(String mailId, Date date, String content) {
 	println "portalname: " + portalname
 	String masked = content.find(/From:.*?Ingress Operations.*?<\/div>/) {str->str.replaceAll(/To: .+?<br>/, "To: **<br>")}
 	if (masked == null) return "ingress operation mail is not found."
+	String tags = "reject"
+	if (masked =~ /too close/) {
+		tags += " tooclose"
+	}
 	new File(Const.postpath, filename).withWriter('UTF-8') { writer ->
 		writer << """---
 layout: portal
 category: reject
-tags: reject
+tags: ${tags}
 id: ${mailId}
 imgurl: ${imgurl}
 portalname: ${portalname}
