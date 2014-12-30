@@ -14,11 +14,13 @@ def genPost(String mailId, Date date, String content) {
 	if (imgurl == null) return "image url is not found."
 //	String id = imgurl.substring(imgurl.lastIndexOf("/") + 1)
 //	if (id == null) return "image id is not found."
-	String filename = date.format("yyyy-MM-dd-") + mailId + ".md"
+	String filename = date.format("yyyy-MM-dd-") + mailId + ".html"
 
 	String location = null
-	if (content =~ /www\.google[^\/]+\/maps\/place/) {
+	if (content =~ /www\.google[^\/]+\/maps/) {
 		location = content.find(/https:\/\/www\.google.+?\/maps[^<"]+/) {str->str.find(/@[\d,\.z]+/)}
+		location = location.substring(1)
+		location = location.substring(0, location.lastIndexOf(","))
 	}
 	String portalname = content.find(/Rejected: [^<]+/) {str->str.substring(10)}
 	if (portalname == null) return "portal name is not found."
@@ -27,14 +29,16 @@ def genPost(String mailId, Date date, String content) {
 	new File(Const.postpath, filename).withWriter('UTF-8') { writer ->
 		writer << """---
 layout: portal
+category: reject
 tags: reject
 id: ${mailId}
 imgurl: ${imgurl}
 portalname: ${portalname}
 sentdate: ${date}
+title: ${mailId} - ${portalname}
 """
-		if (location) writer << "location: ${location}\n"
-		writer << "---\n\n"
+		if (location) writer << "location: \"${location}\"\n"
+		writer << "---\n"
 		writer << masked
 	}
 	return null
