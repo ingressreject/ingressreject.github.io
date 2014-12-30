@@ -20,6 +20,8 @@ Reject通知のメールを以下のアドレスまで転送してください�
 
 よろしくお願いします。
 
+- Enlightend Agent: yoshimov
+
 ## 新着ポータル
 
 <ul class="posts">
