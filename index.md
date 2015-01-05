@@ -29,3 +29,14 @@ Reject通知のメールを以下のアドレスまで転送してください�
     <a href="{{ BASE_PATH }}{{ post.url }}" alt="{{ post.title }}"><img src="{{ post.imgurl }}=w100" border="0"/></a>
   {% endfor %}
 </ul>
+
+## [too close](/tags.html#tooclose-ref)
+
+too closeが理由でリジェクトされたポータルは、一番登録される可能性の高いものだと考えられます。
+参考にしていただければと思います。
+
+<ul class="posts">
+  {% for post in site.tags.tooclose limit: 10 %}
+    <a href="{{ BASE_PATH }}{{ post.url }}" alt="{{ post.title }}"><img src="{{ post.imgurl }}=w100" border="0"/></a>
+  {% endfor %}
+</ul>
