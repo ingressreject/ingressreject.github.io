@@ -25,7 +25,7 @@ Reject通知のメールを以下のアドレスまで転送してください�
 ## 新着ポータル
 
 <ul class="posts">
-  {% for post in site.posts limit: 10 %}
+  {% for post in site.tags.reject limit: 10 %}
     <a href="{{ BASE_PATH }}{{ post.url }}" alt="{{ post.title }}"><img src="{{ post.imgurl }}=w100" border="0"/></a>
   {% endfor %}
 </ul>
