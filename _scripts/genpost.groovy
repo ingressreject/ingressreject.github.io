@@ -11,7 +11,7 @@ class Const {
 def genPost(String mailId, Date date, String content) {
 	println "generating post"
 //	println content
-	String imgurl = content.find(/img src="https:\/\/.+?\/[\w\-]+/) {str-> str.substring(str.indexOf("https"))}
+	String imgurl = content.find(/<img [^>]*?src=.+?https?:\/\/.+?\/[\w\-_]+/) {str-> str.substring(str.indexOf("http"))}
 	if (imgurl == null) return "image url is not found."
 	println "imgurl: " + imgurl
 //	String id = imgurl.substring(imgurl.lastIndexOf("/") + 1)
