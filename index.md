@@ -6,7 +6,7 @@ title: Rejected Ingress Portals
 
 ## このサイトについて
 
-このサイトは、Ingressで登録されなかったポータル情報を収集しています。
+このサイトは、Ingressで登録されなかったポータル情報を匿名で共有できるサイトです。
 どういった申請が受け付けられないのかを知る参考にしていただければと思います。
 
 情報提供は随時受け付けております。
@@ -27,7 +27,6 @@ Reject通知のメールを以下のアドレスまで転送してください�
 ## [too close](/tags.html#tooclose-ref)
 
 too closeが理由でリジェクトされたポータルは、一番登録される可能性の高いものだと考えられます。
-参考にしていただければと思います。
 
 <ul class="posts">
   {% for post in site.tags.tooclose limit: 10 %}
