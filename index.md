@@ -16,7 +16,7 @@ Reject通知のメールを以下のアドレスまで転送してください�
 
 情報提供の方法や注意事項につきましては、[投稿方法](/post.html)をご覧ください。
 
-## 新着ポータル
+## 新着リジェクトポータル
 
 <ul class="posts">
   {% for post in site.tags.reject limit: 10 %}
@@ -31,5 +31,13 @@ too closeが理由でリジェクトされたポータルは、一番登録さ�
 <ul class="posts">
   {% for post in site.tags.tooclose limit: 10 %}
     <a href="{{ BASE_PATH }}{{ post.url }}" alt="{{ post.title }}"><img src="{{ post.imgurl }}=w100" border="0"/></a>
+  {% endfor %}
+</ul>
+
+## お知らせなど
+
+<ul class="posts">
+  {% for post in site.tags.news limit: 10 %}
+    <li><span>{{ post.date | date: "%B %e, %Y" }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>

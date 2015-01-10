@@ -1,6 +1,8 @@
-{% if site.safe and site.JB.sharing.provider and page.JB.sharing != false %}
+{% if site.JB.sharing.provider %}
 
 {% case site.JB.sharing.provider %}
+{% when "plusone" %}
+  {% include JB/sharing-plusone %}
 {% when "custom" %}
   {% include custom/sharing %}
 {% endcase %}
