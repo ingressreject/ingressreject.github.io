@@ -1,6 +1,6 @@
 <g:comments
- href="{{ site.production_url }}{{page.url}}/"
- width="642"
- first_party_property="BLOGGER"
- view_type="FILTERED_POSTMOD">
+    href="{{ site.production_url }}{{page.url}}/"
+    width="642"
+    first_party_property="BLOGGER"
+    view_type="FILTERED_POSTMOD">
 </g:comments>
