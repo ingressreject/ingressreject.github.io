@@ -1,5 +1,6 @@
 ---
 layout: page
+group: navigation
 title: プライバシーポリシー
 ---
 ## 当サイトが収集する情報

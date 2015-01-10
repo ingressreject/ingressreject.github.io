@@ -1,5 +1,6 @@
 ---
 layout: page
+group: navigation
 title: 投稿方法
 ---
 情報提供は随時受け付けております。 Reject通知のメールを以下のアドレスまで転送してください。
