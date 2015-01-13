@@ -1,4 +1,5 @@
-<div class='cmt_iframe_holder'
+<div class="g-comments"
     data-href="{{ site.production_url }}{{page.url}}/"
+    data-first_party_property="BLOGGER"
     data-viewtype="FILTERED_POSTMOD">
 </div>
