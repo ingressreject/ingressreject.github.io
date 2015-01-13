@@ -1,6 +1,4 @@
-<g:comments
-    href="{{ site.production_url }}{{page.url}}/"
-    width="642"
-    first_party_property="BLOGGER"
-    view_type="FILTERED_POSTMOD">
-</g:comments>
+<div class='cmt_iframe_holder'
+    data-href="{{ site.production_url }}{{page.url}}/"
+    data-viewtype="FILTERED_POSTMOD">
+</div>
