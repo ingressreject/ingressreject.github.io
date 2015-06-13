@@ -20,16 +20,16 @@ def genPost(String mailId, Date date, String content) {
 	println "filename: " + filename
 
 	String location = null
-	if (content =~ /www\.google[^\/]+\/maps/) {
-		location = content.find(/https:\/\/www\.google.+?\/maps[^<"]+/) {str->str.find(/@[\d,\.z]+/)}
-		location = location.substring(1)
-		location = location.substring(0, location.lastIndexOf(","))
+	if (content =~ /www\.ingress\.com\/intel/) {
+		location = content.find(/https:\/\/www\.ingress\.com\/intel[^<"]+/) {str->str.find(/ll=[\d,\.]+/)}
+		location = location.substring(3)
+//		location = location.substring(0, location.lastIndexOf(","))
 	}
 	println "location: " + location
-	String portalname = content.find(/Rejected: [^<]+/) {str->str.substring(10)}
+	String portalname = content.find(/complete: [^<]+/) {str->str.substring(10)}
 	if (portalname == null) return "portal name is not found."
 	println "portalname: " + portalname
-	String masked = content.find(/From:.*?Ingress Operations.*?<\/div>/) {str->str.replaceAll(/To: .+?<br>/, "To: **<br>")}
+	String masked = content.find(/From:.*?Ingress Operations.*<\/div>/) {str->str.replaceAll(/To: .+?<br>/, "To: **<br>")}
 	if (masked == null) return "ingress operation mail is not found."
 	String tags = "reject"
 	if (masked =~ /too close/) {
@@ -76,7 +76,7 @@ folder.search(new AndTerm(new FlagTerm(new Flags(Flags.Flag.SEEN), false), new B
 		Multipart parent = (Multipart)msg.content
 		for (i = 0; i < parent.getCount(); i ++) {
 			Part part = parent.getBodyPart(i)
-			if (part.isMimeType("text/html") && part.content.contains("Rejected")) {
+			if (part.isMimeType("text/html") && part.content.contains("not to accept")) {
 				err = genPost(id, msg.sentDate, part.content)
 				if (err) {
 					// TODO: reply error mail
